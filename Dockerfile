@@ -1,10 +1,10 @@
 # Docker file for SWTPM
-FROM debian:bookworm
+FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG LTPMS_COMMIT=92ab42119406d6c8f9adda8d202205e82eb99d79
-ARG SWTPM_COMMIT=d6ca69ad4622e25c6ef2d49820ed92df7b42b89e
+ARG LTPMS_COMMIT=2dc1af12e5b09a7f9eaf2dee47737b63ddfd7cb7
+ARG SWTPM_COMMIT=54583a87b53623dbb04f9318c68e3d85246a6f9d
 
 # Install libtpms and swtpm dependencies
 RUN apt-get update && \
