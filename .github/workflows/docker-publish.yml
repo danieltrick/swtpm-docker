@@ -5,8 +5,8 @@ on:
     types: [published]
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  build:
+    name: build & push
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -38,3 +38,20 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  release:
+    name: GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull and save the Docker image
+        run: |
+          docker image pull danieltrick/swtpm-docker:${{ github.ref_name }}
+          docker image save danieltrick/swtpm-docker:${{ github.ref_name }} | xz -9v > swtpm_docker-${{ github.ref_name }}.tar.xz
+
+      - name: Upload image to GitHub release
+        uses: Roang-zero1/github-upload-release-artifacts-action@v2
+        with:
+          args: swtpm_docker-${{ github.ref_name }}.tar.xz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
