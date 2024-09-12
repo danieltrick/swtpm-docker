@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r8 - 2024-09-13
+
+### Changed
+- swtpm: Updated to revision `28292591cbef` (2024-09-12)
+- libtpms: Updated to revision `46548da8edbf` (2024-09-12)
+
 ## r7 - 2024-09-08
 
 ### Changed
