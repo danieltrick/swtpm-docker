@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Included `swtpm_{bios,cert,ioctl,localca,setup}` tools in the image.
 
+### Changed
+- swtpm: Updated to revision `017f99ceddb0` (2024-09-17)
+- libtpms: Updated to revision `e898872637b4` (2024-09-13)
+
 ## r8 - 2024-09-13
 
 ### Changed
