@@ -65,21 +65,28 @@ FROM alpine:$ALPINE_VERS
 # Install runtime dependencies
 RUN apk add --no-cache \
     json-glib \
+    gmp \
+    gnutls-utils \
     libseccomp
 
 # Copy libtpms library
 COPY --from=build \
-    /usr/lib/libtpms.so.0 \
+    /usr/lib/libtpms.so* \
     /usr/lib/
 
 # Copy SWTPM libraries
 COPY --from=build \
-    /usr/lib/swtpm/libswtpm_libtpms.so.0 \
+    /usr/lib/swtpm/libswtpm_libtpms.so* \
     /usr/lib/swtpm/
+
+# Copy configuration files
+COPY --from=build \
+    /etc/swtpm* \
+    /etc/
 
 # Copy SWTPM executable
 COPY --from=build \
-    /usr/bin/swtpm \
+    /usr/bin/swtpm* \
     /usr/bin/
 
 # Start SWTPM Server

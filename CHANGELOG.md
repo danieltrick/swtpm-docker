@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r9 - 2024-09-18
+
+### Added
+- Included `swtpm_{bios,cert,ioctl,localca,setup}` tools in the image.
+
 ## r8 - 2024-09-13
 
 ### Changed
