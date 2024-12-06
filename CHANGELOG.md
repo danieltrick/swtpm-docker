@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r11 - 2024-12-06
+
+### Changed
+- swtpm: Updated to revision `314f5f411b32` (2024-12-02)
+- libtpms: Updated to revision `f22745c72933` (2024-11-15)
+- Base system: Updated to `alpine:3.21.0` (2024-12-05)
+
 ## r10 - 2024-09-28
 
 ### Changed
