@@ -53,15 +53,18 @@ jobs:
     name: GitHub release
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [amd64, arm64]
     steps:
       - name: Pull and save the Docker image
         run: |
-          docker image pull danieltrick/swtpm-docker:${{ github.ref_name }}
-          docker image save danieltrick/swtpm-docker:${{ github.ref_name }} | xz -9v > swtpm_docker-${{ github.ref_name }}.tar.xz
+          docker image pull --platform linux/${{ matrix.platform }} danieltrick/swtpm-docker:${{ github.ref_name }}
+          docker image save danieltrick/swtpm-docker:${{ github.ref_name }} | xz -9v > swtpm_docker-${{ github.ref_name }}.linux-${{ matrix.platform }}.tar.xz
 
       - name: Upload image to GitHub release
         uses: Roang-zero1/github-upload-release-artifacts-action@v2
         with:
-          args: swtpm_docker-${{ github.ref_name }}.tar.xz
+          args: swtpm_docker-${{ github.ref_name }}.linux-${{ matrix.platform }}.tar.xz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
