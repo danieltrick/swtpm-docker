@@ -10,7 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Enabled multi-platform build for `linux/amd64` and `linux/arm64`
 
 ### Changed
-- Improved *default* command-line parameters for `swtpm` invocation
+- swtpm: Improved *default* command-line parameters for `swtpm` invocation
+- swtpm: Updated to revision `0528ac733b76` (2025-01-20)
 
 ## r12 - 2025-01-15
 
