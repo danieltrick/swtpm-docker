@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r13 - 2025-01-23
+
+### Added
+- Enabled multi-platform build for `linux/amd64` and `linux/arm64`
+
+### Changed
+- Improved *default* command-line parameters for `swtpm` invocation
+
 ## r12 - 2025-01-15
 
 ### Changed
