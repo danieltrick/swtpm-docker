@@ -30,6 +30,7 @@ Version history
 
 | **Release** | **Date**   | **Base system**       | **SWTPM version**                                                                    | **libtpms version**                                                           |
 | ------------| ---------- | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| r14         | 2025-02-20 | Alpine 3.21.3         | 0.11.0 / [`0528ac733b76`](https://github.com/stefanberger/swtpm/commit/0528ac733b76) | [`ecb769cdb8dd`](https://github.com/stefanberger/libtpms/commit/ecb769cdb8dd) |
 | r13         | 2025-01-23 | Alpine 3.21.2         | 0.11.0 / [`0528ac733b76`](https://github.com/stefanberger/swtpm/commit/0528ac733b76) | [`ecb769cdb8dd`](https://github.com/stefanberger/libtpms/commit/ecb769cdb8dd) |
 | r12         | 2025-01-15 | Alpine 3.21.2         | 0.11.0 / [`3d6a8b75b335`](https://github.com/stefanberger/swtpm/commit/3d6a8b75b335) | [`ecb769cdb8dd`](https://github.com/stefanberger/libtpms/commit/ecb769cdb8dd) |
 | r11         | 2024-12-06 | Alpine 3.21.0         | 0.11.0 / [`314f5f411b32`](https://github.com/stefanberger/swtpm/commit/314f5f411b32) | [`f22745c72933`](https://github.com/stefanberger/libtpms/commit/f22745c72933) |
