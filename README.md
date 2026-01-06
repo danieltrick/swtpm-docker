@@ -6,12 +6,12 @@ The purpose of this repository is to provide ready to use Docker images of [swtp
 **Docker Hub page:**  
 <https://hub.docker.com/r/danieltrick/swtpm-docker>
 
-Usage:
-------
+Usage
+-----
 
 In order to start `swtpm` via Docker, just run the following command:
 ```sh
-$ docker run -p 2321:2321 -p 2322:2322 danieltrick/swtpm-docker:r13
+$ docker run -p 2321:2321 -p 2322:2322 danieltrick/swtpm-docker:r19
 ```
 
 ### Default parameters
@@ -30,6 +30,7 @@ Version history
 
 | **Release** | **Date**   | **Base system**       | **SWTPM version**                                                                    | **libtpms version**                                                           |
 | ------------| ---------- | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| r19         | 2026-01-06 | Alpine 3.23.2         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`fc8820cfaa8b`](https://github.com/stefanberger/libtpms/commit/fc8820cfaa8b) |
 | r18         | 2025-12-11 | Alpine 3.23.0         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`4f71e9b45db1`](https://github.com/stefanberger/libtpms/commit/4f71e9b45db1) |
 | r17         | 2025-11-05 | Alpine 3.22.2         | 0.11.0 / [`8084873972b4`](https://github.com/stefanberger/swtpm/commit/8084873972b4) | [`7310725524c2`](https://github.com/stefanberger/libtpms/commit/7310725524c2) |
 | r16         | 2025-08-12 | Alpine 3.22.1         | 0.11.0 / [`665486b8179f`](https://github.com/stefanberger/swtpm/commit/665486b8179f) | [`b4d81572c15b`](https://github.com/stefanberger/libtpms/commit/b4d81572c15b) |

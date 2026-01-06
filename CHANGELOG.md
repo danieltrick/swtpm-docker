@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r19 - 2026-01-06
+
+### Changed
+- libtpms: Updated to revision `fc8820cfaa8b` (2026-01-02)
+- Base system: Updated to `alpine:3.23.2` (2025-12-18)
+
 ## r18 - 2025-12-11
 
 ### Changed
