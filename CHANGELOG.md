@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r20 - 2026-01-23
+
+### Changed
+- libtpms: Updated to revision `c2a8109f8b44` (2026-01-20)
+
 ## r19 - 2026-01-06
 
 ### Changed

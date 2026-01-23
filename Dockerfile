@@ -8,7 +8,7 @@ FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
 ARG SWTPM_COMMIT=d41849c30e78fa3a7461e890e83da3c1be097382
-ARG LTPMS_COMMIT=fc8820cfaa8b5e17328f731df93911f6ab92443b
+ARG LTPMS_COMMIT=c2a8109f8b440ddfb0ad5c6fb4d02db4e9bb5378
 
 # Install build dependencies
 RUN apk add --no-cache \
