@@ -1,35 +1,60 @@
 SWTPM Docker
 ============
 
-The purpose of this repository is to provide ready to use Docker images of [swtpm](https://github.com/stefanberger/swtpm).
+The purpose of this repository is to provide ready to use Docker images of [**`swtpm`**](https://github.com/stefanberger/swtpm).
+
+SWTPM (Software TPM Emulator), by D. Safford and S. Berger, is based on [libtpms](https://github.com/stefanberger/libtpms) and socket communication.
 
 **Docker Hub page:**  
 <https://hub.docker.com/r/danieltrick/swtpm-docker>
 
+
 Usage
 -----
 
-In order to start `swtpm` via Docker, just run the following command:
+To start the SWTPM (Software TPM Emulator) via Docker, simply run:
+
 ```sh
-$ docker run -p 2321:2321 -p 2322:2322 danieltrick/swtpm-docker:r19
+$ docker run -p 127.0.0.1:2321-2322:2321-2322 danieltrick/swtpm-docker:r21
 ```
 
-### Default parameters
+### TPM 2.0 Software Stack
 
-By default, `swtpm` will be invoked with the following parameters:
-```sh
-socket --tpm2 \
---server type=tcp,port=2321,bindaddr=0.0.0.0 \
---ctrl   type=tcp,port=2322,bindaddr=0.0.0.0 \
---flags not-need-init \
---tpmstate dir=/var/lib/swtpm/tpmstate
+The easiest way to work with the TPM simulator is via the **TPM 2.0 Software Stack (TSS2)**:
+- <https://github.com/tpm2-software/tpm2-tss>
+- <https://github.com/tpm2-software/rust-tss-fapi>
+
+#### Configuration
+
+You can set up TSS2 to use the TPM simulator with the following TCTI configuration:
 ```
+swtpm:host=127.0.0.1,port=2321
+```
+
+For details, please refer to:  
+<https://github.com/tpm2-software/tpm2-tss/blob/master/doc/tcti.md#tcti-swtpm>
+
+### Example
+
+Here is a simple example that uses [**`tpm2-tools`**](https://github.com/tpm2-software/tpm2-tools) to request random bytes from the TPM simulator:
+
+1. Run the `TPM2_Startup` command, if not done already:
+   ```sh
+   $ tpm2_startup -T swtpm:host=127.0.0.1,port=2321 -c
+   ```
+
+2. Now run the `TPM2_GetRandom` command:
+   ```sh
+   $ tpm2_getrandom -T swtpm:host=127.0.0.1,port=2321 --hex 16
+   ```
+
 
 Version history
 ---------------
 
 | **Release** | **Date**   | **Base system**       | **SWTPM version**                                                                    | **libtpms version**                                                           |
 | ------------| ---------- | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| r21         | 2026-01-29 | Alpine 3.23.3         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`c2a8109f8b44`](https://github.com/stefanberger/libtpms/commit/c2a8109f8b44) |
 | r20         | 2026-01-23 | Alpine 3.23.2         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`c2a8109f8b44`](https://github.com/stefanberger/libtpms/commit/c2a8109f8b44) |
 | r19         | 2026-01-06 | Alpine 3.23.2         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`fc8820cfaa8b`](https://github.com/stefanberger/libtpms/commit/fc8820cfaa8b) |
 | r18         | 2025-12-11 | Alpine 3.23.0         | 0.11.0 / [`d41849c30e78`](https://github.com/stefanberger/swtpm/commit/d41849c30e78) | [`4f71e9b45db1`](https://github.com/stefanberger/libtpms/commit/4f71e9b45db1) |
