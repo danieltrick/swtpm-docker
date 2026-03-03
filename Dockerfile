@@ -7,8 +7,8 @@ ARG ALPINE_VERS=3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20a
 FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
-ARG SWTPM_COMMIT=48358b244da81d9e0f0b4f88b38ff11dc5bf26b1
-ARG LTPMS_COMMIT=712ab4d5313222280af8994320a456b7747c2926
+ARG SWTPM_COMMIT=f0606348e97ac08f69f4a6c27b64c8088d2e9bd4
+ARG LTPMS_COMMIT=9787502b169db9f03f962fbedcd0f80246e063a7
 
 # Install build dependencies
 RUN apk add --no-cache \
@@ -37,10 +37,14 @@ RUN apk add --no-cache \
     socat \
     softhsm
 
+# Copy patch file(s)
+COPY patch/libtpms-cryptparameterdecryption-fix_buffer_size_check.diff /opt/libtpms-cryptparameterdecryption-fix_buffer_size_check.diff
+
 # Build libtpms
 RUN mkdir -p /tmp/libtpms-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/libtpms/archive/${LTPMS_COMMIT}.tar.gz | tar -C /tmp/libtpms-src --strip-components=1 -xzv \
     && cd /tmp/libtpms-src \
+    && patch -p1 < /opt/libtpms-cryptparameterdecryption-fix_buffer_size_check.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-tpm2 --with-openssl \
     && make -j$(nproc) \
     && make -j$(nproc) install \

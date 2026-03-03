@@ -4,10 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r23 - 2026-03-03
+
+### Changed
+- swtpm: Updated to revision `f0606348e97a` (2026-03-02)
+- libtpms: Updated to revision `9787502b169d` (2026-03-02)
+
+### Fixed
+- Implemented workaround for buffer size check failing in `CryptParameterDecryption()` function.
+
 ## r22 - 2026-02-24
 
 ### Changed
-- swtpm: Updated to revision `48358b244da8` (2025-02-12)
+- swtpm: Updated to revision `48358b244da8` (2026-02-12)
 - libtpms: Updated to revision `712ab4d53132` (2026-02-23)
 
 ## r21 - 2026-01-29

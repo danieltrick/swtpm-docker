@@ -1,0 +1,13 @@
+diff --git a/src/tpm2/TPMCmd/tpm/src/crypt/CryptUtil.c b/src/tpm2/TPMCmd/tpm/src/crypt/CryptUtil.c
+index 7401f26..2eb2b74 100644
+--- a/src/tpm2/TPMCmd/tpm/src/crypt/CryptUtil.c
++++ b/src/tpm2/TPMCmd/tpm/src/crypt/CryptUtil.c
+@@ -994,7 +994,7 @@ CryptParameterDecryption(
+         return TPM_RC_INSUFFICIENT;
+     }
+ 
+-    if(cipherSize > MAX_COMMAND_SIZE || bufferSize <= 0
++    if(cipherSize > MAX_COMMAND_SIZE || bufferSize < 0
+        || (UINT32)cipherSize > (UINT32)bufferSize)
+     {
+         return TPM_RC_SIZE;
