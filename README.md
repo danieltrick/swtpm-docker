@@ -1,9 +1,9 @@
+![SWTPM Docker Logo](etc/swtpm-docker.png)
+
 SWTPM Docker
 ============
 
-The purpose of this repository is to provide ready to use Docker images of [**`swtpm`**](https://github.com/stefanberger/swtpm).
-
-SWTPM (Software TPM Emulator), by D. Safford and S. Berger, is based on [libtpms](https://github.com/stefanberger/libtpms) and socket communication.
+This repository provides ready-to-use Docker images for [**SWTPM**](https://github.com/stefanberger/swtpm), a software-based TPM (Trusted Platform Module) emulator, enabling easy deployment and testing of TPM functionality in containerized environments.
 
 **Docker Hub page:**  
 <https://hub.docker.com/r/danieltrick/swtpm-docker>
@@ -15,7 +15,7 @@ Usage
 To start the SWTPM (Software TPM Emulator) via Docker, simply run:
 
 ```sh
-$ docker run -p 127.0.0.1:2321-2322:2321-2322 danieltrick/swtpm-docker:r21
+$ docker run -p 127.0.0.1:2321-2322:2321-2322 danieltrick/swtpm-docker:r25
 ```
 
 ### TPM 2.0 Software Stack
@@ -78,3 +78,240 @@ Version history
 | r4          | 2024-08-29 | Alpine 3.20.2         | 0.10.0 / [`54583a87b536`](https://github.com/stefanberger/swtpm/commit/54583a87b536) | [`2dc1af12e5b0`](https://github.com/stefanberger/libtpms/commit/2dc1af12e5b0) |
 | r2          | 2024-08-27 | Debian 12, 2024-08-12 | 0.10.0 / [`54583a87b536`](https://github.com/stefanberger/swtpm/commit/54583a87b536) | [`2dc1af12e5b0`](https://github.com/stefanberger/libtpms/commit/2dc1af12e5b0) |
 | r1          | 2024-08-27 | Debian 12, 2024-08-12 | 0.10.0 / [`d6ca69ad4622`](https://github.com/stefanberger/swtpm/commit/d6ca69ad4622) | [`92ab42119406`](https://github.com/stefanberger/libtpms/commit/92ab42119406) |
+
+
+Acknowledgement
+---------------
+
+The Docker images produced by this project incorporate the following third-party software components, each redistributed strictly in accordance with its respective license terms:
+
+### SWTPM - Software TPM Emulator
+
+The SWTPM package provides TPM emulators with different front-end interfaces to libtpms.
+
+**Authors:**
+* David Safford, safford@us.ibm.com
+* Stefan Berger, stefanb@us.ibm.com
+
+**Source:**  
+<https://github.com/stefanberger/swtpm>
+
+**License:**
+```
+(c) Copyright IBM Corporation 2006, 2010.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+Neither the names of the IBM Corporation nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+### libtpms
+
+Libtpms is a library that targets the integration of TPM functionality into hypervisors, primarily into Qemu.
+
+**Authors:**
+* Stefan Berger, stefanb@us.ibm.com
+* William Roberts, william.c.roberts@intel.com
+
+**Source:**  
+<https://github.com/stefanberger/libtpms>
+
+**License:**
+```
+For the TPM 1.2 code and the library code the following license applies:
+
+(c) Copyright IBM Corporation 2006 - 2011
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+Neither the names of the IBM Corporation nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+For TPM 2 code that does not explicitly state a license, the following
+license and notices apply:
+
+TCG Reference Implementation for TPM 2.0
+This code is informative.
+
+The copyright in this software is being made available under the BSD License,
+included below.
+
+Copyright 2010-2022 Microsoft Corporation
+Copyright 2022-2025 Trusted Computing Group and its contributors
+
+All rights reserved.
+
+BSD License
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this
+list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS""
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+For other TPM 2 code the following license and notices apply:
+
+Licenses and Notices
+
+  1. Copyright Licenses:
+
+  - Trusted Computing Group (TCG) grants to the user of the source code in
+    this specification (the "Source Code") a worldwide, irrevocable,
+    nonexclusive, royalty free, copyright license to reproduce, create
+    derivative works, distribute, display and perform the Source Code and
+    derivative works thereof, and to grant others the rights granted herein.
+
+  - The TCG grants to the user of the other parts of the specification
+    (other than the Source Code) the rights to reproduce, distribute,
+    display, and perform the specification solely for the purpose of
+    developing products based on such documents.
+
+  2. Source Code Distribution Conditions:
+
+  - Redistributions of Source Code must retain the above copyright licenses,
+    this list of conditions and the following disclaimers.
+
+  - Redistributions in binary form must reproduce the above copyright
+    licenses, this list of conditions	and the following disclaimers in the
+    documentation and/or other materials provided with the distribution.
+
+  3. Disclaimers:
+
+  - THE COPYRIGHT LICENSES SET FORTH ABOVE DO NOT REPRESENT ANY FORM OF
+  LICENSE OR WAIVER, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, WITH
+  RESPECT TO PATENT RIGHTS HELD BY TCG MEMBERS (OR OTHER THIRD PARTIES)
+  THAT MAY BE NECESSARY TO IMPLEMENT THIS SPECIFICATION OR OTHERWISE.
+  Contact TCG Administration (admin@trustedcomputinggroup.org) for
+  information on specification licensing rights available through TCG
+  membership agreements.
+
+  - THIS SPECIFICATION IS PROVIDED "AS IS" WITH NO EXPRESS OR IMPLIED
+    WARRANTIES WHATSOEVER, INCLUDING ANY WARRANTY OF MERCHANTABILITY OR
+    FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, COMPLETENESS, OR
+    NONINFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS, OR ANY WARRANTY
+    OTHERWISE ARISING OUT OF ANY PROPOSAL, SPECIFICATION OR SAMPLE.
+
+  - Without limitation, TCG and its members and licensors disclaim all
+    liability, including liability for infringement of any proprietary
+    rights, relating to use of information in this specification and to the
+    implementation of this specification, and TCG disclaims all liability for
+    cost of procurement of substitute goods or services, lost profits, loss
+    of use, loss of data or any incidental, consequential, direct, indirect,
+    or special damages, whether under contract, tort, warranty or otherwise,
+    arising in any way out of use or reliance upon this specification or any
+    information herein.
+
+  (c) Copyright IBM Corp. and others, 2012-2016
+```
+
+### Alpine Linux
+
+Alpine Linux is an independent, non-commercial, general purpose Linux distribution.
+
+**Authors:**  
+The Alpine Linux Development Team
+
+**Source:**  
+<https://www.alpinelinux.org/>
+
+**License:**  
+Alpine Linux is a collection of open-source software components rather than a single licensed work, and therefore does not have a unified license. Its core components are distributed under a combination of widely used open-source licenses. The Linux kernel and core utilities such as BusyBox are licensed under the GNU General Public License v2 (GPLv2), while the musl standard C library is licensed under the MIT License. For more detailed information, please refer to the documentation of each package or the Alpine Linux package repository.
+
+
+License
+-------
+
+The following license terms apply to all code in this repository, including the Dockerfile:
+
+```
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>
+```
