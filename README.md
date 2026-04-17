@@ -15,7 +15,7 @@ Usage
 To start the SWTPM (Software TPM Emulator) via Docker, simply run:
 
 ```sh
-$ docker run -p 127.0.0.1:2321-2322:2321-2322 danieltrick/swtpm-docker:r25
+$ docker run -p 127.0.0.1:2321-2322:2321-2322 danieltrick/swtpm-docker:r26
 ```
 
 ### TPM 2.0 Software Stack
@@ -54,6 +54,7 @@ Version history
 
 | **Release** | **Date**   | **Base system**       | **SWTPM version**                                                                    | **libtpms version**                                                           |
 | ------------| ---------- | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| r26         | 2026-04-17 | Alpine 3.23.4         | 0.11.0 / [`062307389032`](https://github.com/stefanberger/swtpm/commit/062307389032) | [`cea0585f5c5d`](https://github.com/stefanberger/libtpms/commit/cea0585f5c5d) |
 | r25         | 2026-03-17 | Alpine 3.23.3         | 0.11.0 / [`407c2a57c168`](https://github.com/stefanberger/swtpm/commit/407c2a57c168) | [`77104fbfbdaf`](https://github.com/stefanberger/libtpms/commit/77104fbfbdaf) |
 | r24         | 2026-03-06 | Alpine 3.23.3         | 0.11.0 / [`6bca01559021`](https://github.com/stefanberger/swtpm/commit/6bca01559021) | [`ec4b1a7d56f5`](https://github.com/stefanberger/libtpms/commit/ec4b1a7d56f5) |
 | r23         | 2026-03-03 | Alpine 3.23.3         | 0.11.0 / [`f0606348e97a`](https://github.com/stefanberger/swtpm/commit/f0606348e97a) | [`9787502b169d`](https://github.com/stefanberger/libtpms/commit/9787502b169d) |
