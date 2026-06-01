@@ -7,8 +7,8 @@ ARG ALPINE_VERS=3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878
 FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
-ARG SWTPM_COMMIT=06230738903237dfe4a4ac9710af5864b1fea0c2
-ARG LTPMS_COMMIT=cea0585f5c5d64e3f543aeededd9b21d6334bb9e
+ARG SWTPM_COMMIT=4a748877d7540e35656dbb918ab3eb18cf866b9a
+ARG LTPMS_COMMIT=06ec934c24acb9422eb7e11195a05da4216b24d5
 
 # Install build dependencies
 RUN apk add --no-cache \
@@ -28,6 +28,7 @@ RUN apk add --no-cache \
     libtasn1-dev \
     libtool \
     make \
+    openssl \
     openssl-dev \
     py3-cryptography \
     py3-pip \
