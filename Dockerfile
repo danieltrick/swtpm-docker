@@ -65,10 +65,10 @@ FROM alpine:$ALPINE_VERS
 
 # Install runtime dependencies
 RUN apk add --no-cache \
-    json-glib \
     gmp \
-    gnutls-utils \
-    libseccomp
+    json-glib \
+    libseccomp \
+    openssl
 
 # Copy libtpms library
 COPY --from=build \
