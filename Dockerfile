@@ -68,6 +68,7 @@ RUN apk add --no-cache \
     gmp \
     json-glib \
     libseccomp \
+    libtasn1 \
     openssl
 
 # Copy libtpms library
