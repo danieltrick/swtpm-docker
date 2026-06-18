@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r29 - 2026-06-18
+
+### Changed
+- Base system: Updated to `alpine:3.24.1` (2026-06-13)
+
 ## r28 - 2026-06-11
 
 ### Changed
