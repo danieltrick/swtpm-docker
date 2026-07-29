@@ -1,0 +1,21 @@
+diff --git a/src/tpm2/TPMCmd/tpm/src/subsystem/Hierarchy.c b/src/tpm2/TPMCmd/tpm/src/subsystem/Hierarchy.c
+index de31c771..0868ace7 100644
+--- a/src/tpm2/TPMCmd/tpm/src/subsystem/Hierarchy.c
++++ b/src/tpm2/TPMCmd/tpm/src/subsystem/Hierarchy.c
+@@ -43,13 +43,9 @@ void HierarchyPreInstall_Init(void)
+     gp.EPSeed.t.size = sizeof(gp.EPSeed.t.buffer);
+     gp.SPSeed.t.size = sizeof(gp.SPSeed.t.buffer);
+     gp.PPSeed.t.size = sizeof(gp.PPSeed.t.buffer);
+-#if (defined USE_PLATFORM_EPS) && (USE_PLATFORM_EPS != NO)
+-    _plat__GetEPS(gp.EPSeed.t.size, gp.EPSeed.t.buffer);
+-#else
+-    CryptRandomGenerate(gp.EPSeed.t.size, gp.EPSeed.t.buffer);
+-#endif
+-    CryptRandomGenerate(gp.SPSeed.t.size, gp.SPSeed.t.buffer);
+-    CryptRandomGenerate(gp.PPSeed.t.size, gp.PPSeed.t.buffer);
++    memset(gp.EPSeed.t.buffer, 0x5C, gp.EPSeed.t.size);
++    memset(gp.SPSeed.t.buffer, 0x36, gp.SPSeed.t.size);
++    memset(gp.PPSeed.t.buffer, 0x6A, gp.PPSeed.t.size);
+ 
+     gp.EPSeedCompatLevel = RuntimeProfileGetSeedCompatLevel();   // libtpms added begin
+     gp.SPSeedCompatLevel = RuntimeProfileGetSeedCompatLevel();

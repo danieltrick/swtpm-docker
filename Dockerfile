@@ -38,10 +38,14 @@ RUN apk add --no-cache \
     socat \
     softhsm
 
+# Copy patch file(s)
+COPY patch/libtpms-fixed_seeds.diff /tmp/libtpms-fixed_seeds.diff
+
 # Build libtpms
 RUN mkdir -p /tmp/libtpms-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/libtpms/archive/${LTPMS_COMMIT}.tar.gz | tar -C /tmp/libtpms-src --strip-components=1 -xzv \
     && cd /tmp/libtpms-src \
+    && patch -p1 < /tmp/libtpms-fixed_seeds.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-tpm2 --with-openssl \
     && make -j$(nproc) \
     && make -j$(nproc) install \
