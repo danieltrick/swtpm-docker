@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r30 - 2026-08-13
+
+### Changed
+- swtpm: Updated to revision `db2386b2c153` (2026-07-15)
+- libtpms: Updated to revision `0356d4339bcb` (2026-08-12)
+
+### Fixed
+- [CVE-2026-6727](https://github.com/advisories/GHSA-fv5r-gp2c-7mwv) was fixed upstream in `libtpms` ([details](https://github.com/stefanberger/libtpms/commit/0356d4339bcb1c8f309d99658ba604c35f7f2894))
+- [CVE-2026-6726](https://github.com/advisories/GHSA-72rq-994p-w2hw) was fixed upstream in `libtpms` ([details](https://github.com/stefanberger/libtpms/commit/ef2762830558aa94e74db3a59d3dff5a4c159687))
+
 ## r29 - 2026-06-18
 
 ### Changed
