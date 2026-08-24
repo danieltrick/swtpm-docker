@@ -10,6 +10,9 @@ FROM alpine:$ALPINE_VERS AS build
 ARG SWTPM_COMMIT=93e7c5c4144b3fbc746b0e58d6b1dec815870c94
 ARG LTPMS_COMMIT=0356d4339bcb1c8f309d99658ba604c35f7f2894
 
+# Copy patch
+COPY patch/swtpm-sign_compare.diff /tmp/swtpm-sign_compare.diff
+
 # Install build dependencies
 RUN apk add --no-cache \
     autoconf \
@@ -52,6 +55,7 @@ RUN mkdir -p /tmp/libtpms-src \
 RUN mkdir -p /tmp/swtpm-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/swtpm/archive/${SWTPM_COMMIT}.tar.gz | tar -C /tmp/swtpm-src --strip-components=1 -xzv \
     && cd /tmp/swtpm-src \
+    && patch -p1 < /tmp/swtpm-sign_compare.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-openssl --disable-tests \
     && make -j$(nproc) \
     && make -j$(nproc) install \

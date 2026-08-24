@@ -1,0 +1,13 @@
+diff --git a/src/swtpm/swtpm_nvstore_linear_file.c b/src/swtpm/swtpm_nvstore_linear_file.c
+index 6a72ea7..618ff07 100644
+--- a/src/swtpm/swtpm_nvstore_linear_file.c
++++ b/src/swtpm/swtpm_nvstore_linear_file.c
+@@ -235,7 +235,7 @@ SWTPM_NVRAM_LinearFile_Flush(const char* uri SWTPM_ATTR_UNUSED,
+         logprintf(STDERR_FILENO, "%s: sysconf failed: %s\n",
+                   __func__, strerror(errno));
+         return TPM_FAIL;
+-    } else if (n == 0 || n > UINT32_MAX) {
++    } else if (n == 0 || ((uint32_t)n) > UINT32_MAX) {
+         logprintf(STDERR_FILENO, "%s: sysconf returned bad value for _SC_PAGESIZE: %ld\n",
+                   __func__, n);
+         return TPM_FAIL;
