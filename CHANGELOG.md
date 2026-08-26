@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r32 - 2026-08-26
+
+### Changed
+- swtpm: Updated to revision `dc005ccf5743` (2026-08-24)
+
 ## r31 - 2026-08-24
 
 ### Changed
