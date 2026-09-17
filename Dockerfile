@@ -39,12 +39,13 @@ RUN apk add --no-cache \
     softhsm
 
 # Copy patch files
-COPY patch/swtpm-nodelay.diff /tmp/swtpm-nodelay.diff
+COPY patch/libtpms-fix_format.diff patch/swtpm-nodelay.diff /tmp/
 
 # Build libtpms
 RUN mkdir -p /tmp/libtpms-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/libtpms/archive/${LTPMS_COMMIT}.tar.gz | tar -C /tmp/libtpms-src --strip-components=1 -xzv \
     && cd /tmp/libtpms-src \
+    && patch -p1 < /tmp/libtpms-fix_format.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-tpm2 --with-openssl \
     && make -j$(nproc) \
     && make -j$(nproc) install \
