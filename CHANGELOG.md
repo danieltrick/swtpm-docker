@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r33 - 2026-09-17
+
+### Added
+
+- Added patch to set `TCP_NODELAY` flag for all client connections.
+
+### Changed
+- swtpm: Updated to revision `8a91320d422d` (2026-09-09)
+- libtpms: Updated to revision `4f590ef9cc7b` (2026-09-17)
+
 ## r32 - 2026-08-26
 
 ### Changed

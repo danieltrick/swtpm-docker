@@ -1,0 +1,51 @@
+diff --git a/src/swtpm/mainloop.c b/src/swtpm/mainloop.c
+index a9c86e6..489ccfb 100644
+--- a/src/swtpm/mainloop.c
++++ b/src/swtpm/mainloop.c
+@@ -52,6 +52,8 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <sys/socket.h>
++#include <netinet/in.h>
++#include <netinet/tcp.h>
+ 
+ #include <libtpms/tpm_error.h>
+ #include <libtpms/tpm_library.h>
+@@ -75,6 +77,24 @@ static TPM_MODIFIER_INDICATOR g_locality;
+ 
+ bool g_mainloop_terminate;
+ 
++static int socket_set_nodelay(const int sockfd)
++{
++    int flag = 1;
++    if (setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(flag)) < 0) {
++        return -1;
++    }
++    return 0;
++}
++
++static int SWTPM_accept(const int sockfd)
++{
++    const int connection_fd = accept(sockfd, NULL, 0);
++    if (connection_fd >= 0) {
++        socket_set_nodelay(connection_fd);
++    }
++    return connection_fd;
++}
++
+ TPM_RESULT
+ mainloop_cb_get_locality(TPM_MODIFIER_INDICATOR *loc,
+                          uint32_t tpmnum SWTPM_ATTR_UNUSED)
+@@ -261,10 +281,10 @@ int mainLoop(struct mainLoopParams *mlp, int notify_fd, bool tpm_running)
+             }
+ 
+             if (pollfds[DATA_SERVER_FD].revents & POLLIN)
+-                connection_fd.fd = accept(pollfds[DATA_SERVER_FD].fd, NULL, 0);
++                connection_fd.fd = SWTPM_accept(pollfds[DATA_SERVER_FD].fd);
+ 
+             if (pollfds[CTRL_SERVER_FD].revents & POLLIN)
+-                ctrlclntfd = accept(ctrlfd, NULL, 0);
++                ctrlclntfd = SWTPM_accept(ctrlfd);
+ 
+             if (pollfds[CTRL_CLIENT_FD].revents & POLLIN) {
+                 ctrlclntfd = ctrlchannel_process_fd(ctrlclntfd,

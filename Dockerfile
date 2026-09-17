@@ -7,8 +7,8 @@ ARG ALPINE_VERS=3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198
 FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
-ARG SWTPM_COMMIT=dc005ccf5743a826564a343890e8f24c3cc86725
-ARG LTPMS_COMMIT=0356d4339bcb1c8f309d99658ba604c35f7f2894
+ARG SWTPM_COMMIT=8a91320d422d00c2a5cea639173f1d7bc57dd9cc
+ARG LTPMS_COMMIT=4f590ef9cc7b711636eb8726d4e474ec42bd9576
 
 # Install build dependencies
 RUN apk add --no-cache \
@@ -38,6 +38,9 @@ RUN apk add --no-cache \
     socat \
     softhsm
 
+# Copy patch files
+COPY patch/swtpm-nodelay.diff /tmp/swtpm-nodelay.diff
+
 # Build libtpms
 RUN mkdir -p /tmp/libtpms-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/libtpms/archive/${LTPMS_COMMIT}.tar.gz | tar -C /tmp/libtpms-src --strip-components=1 -xzv \
@@ -52,6 +55,7 @@ RUN mkdir -p /tmp/libtpms-src \
 RUN mkdir -p /tmp/swtpm-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/swtpm/archive/${SWTPM_COMMIT}.tar.gz | tar -C /tmp/swtpm-src --strip-components=1 -xzv \
     && cd /tmp/swtpm-src \
+    && patch -p1 < /tmp/swtpm-nodelay.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-openssl --disable-tests \
     && make -j$(nproc) \
     && make -j$(nproc) install \
