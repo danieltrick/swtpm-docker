@@ -1,5 +1,5 @@
 # Alpine Version
-ARG ALPINE_VERS=3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
+ARG ALPINE_VERS=3.24.2@sha256:31b6477333eb8257db9e5d7c3a7264fd0467928756f0bbcc27d35bea5d28cdbd
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Stage #1
@@ -8,7 +8,7 @@ FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
 ARG SWTPM_COMMIT=8a91320d422d00c2a5cea639173f1d7bc57dd9cc
-ARG LTPMS_COMMIT=4f590ef9cc7b711636eb8726d4e474ec42bd9576
+ARG LTPMS_COMMIT=21fcc7382bf9b84e15e677dac5a075032cd7a0e8
 
 # Install build dependencies
 RUN apk add --no-cache \
@@ -39,13 +39,12 @@ RUN apk add --no-cache \
     softhsm
 
 # Copy patch files
-COPY patch/libtpms-fix_format.diff patch/swtpm-nodelay.diff /tmp/
+COPY patch/swtpm-nodelay.diff /tmp/
 
 # Build libtpms
 RUN mkdir -p /tmp/libtpms-src \
     && curl --tlsv1.2 -sSfL https://github.com/stefanberger/libtpms/archive/${LTPMS_COMMIT}.tar.gz | tar -C /tmp/libtpms-src --strip-components=1 -xzv \
     && cd /tmp/libtpms-src \
-    && patch -p1 < /tmp/libtpms-fix_format.diff \
     && ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-tpm2 --with-openssl \
     && make -j$(nproc) \
     && make -j$(nproc) install \

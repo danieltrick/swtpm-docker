@@ -4,10 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r34 - 2026-09-18
+
+### Changed
+- Base system: Updated to `alpine:3.24.2` (2026-09-17)
+- libtpms: Updated to revision `21fcc7382bf9` (2026-09-17)
+
 ## r33 - 2026-09-17
 
 ### Added
-
 - Added patch to set `TCP_NODELAY` flag for all client connections.
 
 ### Changed
