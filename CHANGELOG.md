@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r35 - 2026-09-30
+
+### Changed
+- swtpm: Updated to revision `f0ec21081533` (2026-09-28)
+- libtpms: Updated to revision `95b0f1d946a7` (2026-09-28)
+
+### Removed
+- Removed custom patch to set `TCP_NODELAY` flag in TCP connections (already included in upstream now).
+
 ## r34 - 2026-09-18
 
 ### Changed
