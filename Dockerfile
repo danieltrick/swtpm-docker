@@ -1,5 +1,5 @@
 # Alpine Version
-ARG ALPINE_VERS=3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+ARG ALPINE_VERS=3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Stage #1
@@ -7,8 +7,8 @@ ARG ALPINE_VERS=3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c5
 FROM alpine:$ALPINE_VERS AS build
 
 # SWTPM Versions
-ARG SWTPM_COMMIT=f0ec21081533d9f98712de2ece529be94d32428f
-ARG LTPMS_COMMIT=95b0f1d946a7779ad2cb86693ce1a1e0617c3db1
+ARG SWTPM_COMMIT=04a65fe53ed9c543caef948da6075b3fe595153d
+ARG LTPMS_COMMIT=0c456c10c1cc2564f575504e573a76ef742a27e7
 
 # Install build dependencies
 RUN apk add --no-cache \
