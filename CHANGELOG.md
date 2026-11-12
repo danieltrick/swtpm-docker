@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## r37 - 2026-11-12
+
+### Changed
+- Base system: Updated to `alpine:3.24.4` (2026-11-08)
+- libtpms: Updated to revision `165c303ccc47` (2026-11-07)
+
 ## r36 - 2026-11-04
 
 ### Changed
